@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System;
 
 namespace DataAccessLayer.Migrations
 {
@@ -73,6 +74,23 @@ namespace DataAccessLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+              name: "Message",
+              columns: table => new
+              {
+                  MessageID = table.Column<int>(type: "int", nullable: false)
+                      .Annotation("SqlServer:Identity", "1, 1"),
+                  Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                  Mail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                  Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                  Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                  Status = table.Column<bool>(type: "bit", nullable: false)
+              },
+              constraints: table =>
+              {
+                  table.PrimaryKey("PK_Messages", x => x.MessageID);
+              });
+
+            migrationBuilder.CreateTable(
                 name: "Portfolios",
                 columns: table => new
                 {
@@ -145,6 +163,8 @@ namespace DataAccessLayer.Migrations
                 {
                     table.PrimaryKey("PK_Testimonials", x => x.TestimonialID);
                 });
+
+           
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -162,6 +182,9 @@ namespace DataAccessLayer.Migrations
                 name: "Features");
 
             migrationBuilder.DropTable(
+                name: "Messages");
+
+            migrationBuilder.DropTable(
                 name: "Portfolios");
 
             migrationBuilder.DropTable(
@@ -175,6 +198,8 @@ namespace DataAccessLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "Testimonials");
+
+            
         }
     }
 }
