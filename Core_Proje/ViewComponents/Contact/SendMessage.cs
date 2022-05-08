@@ -19,13 +19,13 @@ namespace Core_Proje.ViewComponents.Contact
 
             return View();
         }
-        [HttpPost]
-        public IViewComponentResult Invoke(Message p)
-        {
-            p.Date = Convert.ToDateTime(DateTime.Now.ToShortDateString());  //Mesajın kayıt edildiği andaki tarihi dBye yazılsın.
-            p.Status = true;  //başlangıçta true olsun. okuduktan sora folse çeviricez
-            messageManager.TAdd(p);
-            return View();
-        }
+        //[HttpPost]
+        //public IViewComponentResult Invoke(Message p)
+        //{
+        //    p.Date = Convert.ToDateTime(DateTime.Now.ToShortDateString());  //Mesajın kayıt edildiği andaki tarihi dBye yazılsın.
+        //    p.Status = true;  //başlangıçta true olsun. okuduktan sora folse çeviricez
+        //    messageManager.TAdd(p);
+        //    return View();
+        //}
     }
 }
